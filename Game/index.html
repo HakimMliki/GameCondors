@@ -5,7 +5,7 @@
     <style type="text/css">
         #game_area {
             background-color: #000000;
-            border: 1px solid #e5e5e5;
+            border: 5px dashed red;
         }
     </style>
     <script type="text/javascript">
@@ -86,8 +86,46 @@
             context.arc(x, y, 30, 0, Math.PI * 2, true);
             context.closePath();
             context.fill();
-            x += x_speed;
-            y += y_speed;
+
+
+            eye1 = game_area.getContext('2d');
+
+            eye1.beginPath();
+            eye1.fillStyle = "red";
+            eye1.arc(x + 10, y - 10, 7, 0, Math.PI * 2, true);
+            eye1.closePath();
+            eye1.fill();
+
+            eye2 = game_area.getContext('2d');
+            var test = 0;
+            eye2.beginPath();
+            eye2.fillStyle = "red";
+            eye2.arc(x - 10, y - 10, 7, 0, Math.PI * 2, true);
+            eye2.closePath();
+            eye2.fill();
+            if (x > -20 && x < 570) {
+                x += x_speed;
+            } else {
+                if (x < -20) {
+                    x = 569;
+                } else {
+                    x = -19;
+                }
+
+            }
+            if (y > -20 && y < 570) {
+                y += y_speed;
+            } else {
+                if (y < -20) {
+                    y = 569;
+                } else {
+                    y = -19;
+                }
+
+            }
+
+
+
             x_speed *= 0.98;
             y_speed *= 0.98;
         }
